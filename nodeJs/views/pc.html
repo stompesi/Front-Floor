@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>index</title>
+		<meta name="description" content="" />
+		<meta name="author" content="엄 두성" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io.connect('http://localhost');
+			socket.emit('makeRoom', {
+				id : '1234'
+			});
+			socket.on('makeRoom', function(data) {
+				if(data.status == 200) {
+					alert('연결성공');
+				}
+			});
+			
+			socket.on('slideLeft', function() {
+				alert('left');
+			});
+			
+			socket.on('slideRight', function() {
+				alert('right');
+			});
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<input type="button" value="left" onclick="socket.emit('slideLeftFromPc' , {id :'1234'});" />
+			<input type="button" value="right" onclick="socket.emit('slideRightFromPc' , {id :'1234'});" />
+		</div>
+	</body>
+</html>
