@@ -18,6 +18,9 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('.html', ejs.__express);
+ejs.open = '<?';
+ejs.close = '?>';
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -36,7 +39,7 @@ app.get('/users', user.list);
 
 
 app.get('/pc', routes.pc);
-app.get('/mobile', routes.mobile);
+app.get('/rc/rc', routes.rc);
 
 server.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
@@ -61,19 +64,11 @@ io.sockets.on('connection', function(socket) {
 		}
 	});
 	// on broadcast
-	socket.on('slideLeftFromMobile', function(data) {
+	socket.on('slideLeft', function(data) {
 		io.sockets.in(data.id).emit('slideLeft');
 	});
 
-	socket.on('slideRightFromMobile', function(data) {
-		io.sockets.in(data.id).emit('slideRight');
-	});
-
-	socket.on('slideRightFromPc', function(data) {
-		io.sockets.in(data.id).emit('slideLeft');
-	});
-
-	socket.on('slideLeftFromPc', function(data) {
+	socket.on('slideRight', function(data) {
 		io.sockets.in(data.id).emit('slideRight');
 	});
 });

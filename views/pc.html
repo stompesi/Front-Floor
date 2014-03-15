@@ -18,31 +18,22 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 		<script src="/socket.io/socket.io.js"></script>
-		<script>
-			var socket = io.connect('http://localhost');
-			socket.emit('makeRoom', {
-				id : '1234'
-			});
-			socket.on('makeRoom', function(data) {
-				if(data.status == 200) {
-					alert('연결성공');
-				}
-			});
-			
-			socket.on('slideLeft', function() {
-				alert('left');
-			});
-			
-			socket.on('slideRight', function() {
-				alert('right');
-			});
-		</script>
+		<script src="/lib/jquery/jquery-1.11.0.js"></script>
+		<script src="/lib/qrcode/qrcode.js"></script>
+		<script src="/javascript/speaker.js"></script>
 	</head>
 
 	<body>
 		<div>
-			<input type="button" value="left" onclick="socket.emit('slideLeftFromPc' , {id :'1234'});" />
-			<input type="button" value="right" onclick="socket.emit('slideRightFromPc' , {id :'1234'});" />
+			
+			<input type="checkbox" id="sync" value="화면공유" />화면공유
+			<input type="checkbox" id="remoteControl" value="원격제어"/>원격제어
+			<br />
+			<input type="button" id="slideLeft" value="left"/>
+			<input type="button" id="slideRight" value="right"/>
+			<input type="button" id="slideShow" value="slideShow"/>
+			
+			<div id="qrCode"></div>
 		</div>
 	</body>
 </html>

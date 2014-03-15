@@ -18,33 +18,20 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="/lib/jquery/jquery-1.11.0.js"></script>
+		<script src="/lib/qrcode/qrcode.js"></script>
+		<script src="/javascript/controller.js"></script>
 		<!-- 모바일용 스크립트 -->
 		<script>
-			var socket = io.connect('http://localhost');
-			socket.emit('makeRoom', {
-				id : '1234',
-				connectType : 'Mobile'
-			});
-			socket.on('makeRoom', function(data) {
-				if(data.status == 200) {
-					alert('연결성공');
-				}
-			});
 			
-			socket.on('slideLeft', function() {
-				alert('left');
-			});
-			
-			socket.on('slideRight', function() {
-				alert('right');
-			});
 		</script>
 	</head>
 
 	<body>
 		<div>
-			<input type="button" value="left" onclick="socket.emit('slideLeftFromMobile' , {id :'1234'});" />
-			<input type="button" value="right" onclick="socket.emit('slideRightFromMobile' , {id :'1234'});" />
+			<input type="hidden" id="room" value="<?= userId ?>" />
+			<input type="button" id="slideLeft" value="left"/>
+			<input type="button" id="slideRight" value="right"/>
 		</div>
 	</body>
 </html>
