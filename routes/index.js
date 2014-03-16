@@ -12,6 +12,6 @@ exports.pc = function(req, res) {
 };
 
 exports.rc = function(req, res) {
-	res.locals.userId = req.query.userId;
+	res.locals.connectionKey = req.query.connectionKey;
 	res.render('rc.html');
 }; 

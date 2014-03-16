@@ -8,10 +8,15 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var ejs = require('ejs');
+var socket = require('./socket/socket');
 
 //var app = express();
 
-var app = require('express')(), server = require('http').createServer(app), io = require('socket.io').listen(server);
+var app = require('express')(), server = require('http').createServer(app);
+
+//socket
+socket.init(server);
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -43,32 +48,4 @@ app.get('/rc/rc', routes.rc);
 
 server.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
-});
-
-io.set('log level', 0);
-io.sockets.on('connection', function(socket) {
-	socket.emit('news', {
-		hello : 'world'
-	});
-	socket.on('my other event', function(data) {
-		console.log(data);
-		socket.join('room');
-	});
-	
-	socket.on('makeRoom', function(data) {
-		socket.join(data.id);
-		if(data.connectType === 'Mobile') {
-			socket.emit('makeRoom', {
-				status : 200
-			});
-		}
-	});
-	// on broadcast
-	socket.on('slideLeft', function(data) {
-		io.sockets.in(data.id).emit('slideLeft');
-	});
-
-	socket.on('slideRight', function(data) {
-		io.sockets.in(data.id).emit('slideRight');
-	});
 });
