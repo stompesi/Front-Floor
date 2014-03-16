@@ -73,7 +73,7 @@ events.socketInit = function() {
 	
 	// makeRoom : user presentation room make 
 	socket.emit('makeRoom', {
-		userId : testData.userId,
+		userId : $('#userId').val(),
 		title : testData.title,
 		connectType : 'PC',
 	});

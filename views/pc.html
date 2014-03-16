@@ -14,24 +14,38 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		
+
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/lib/jquery/jquery-1.11.0.js"></script>
 		<script src="/lib/qrcode/qrcode.js"></script>
-		<script src="/javascript/speaker.js"></script>
+		<script src="/javascript/socket/speaker.js"></script>
+		<script src="/javascript/common/common.js"></script>
 	</head>
 
 	<body>
+		<input type="hidden" id="type" value="pc" />
 		<div>
-			
-			<input type="checkbox" id="sync" value="화면공유" />화면공유
-			<input type="checkbox" id="remoteControl" value="원격제어"/>원격제어
+			<form id="loginForm" action="#">
+				<input type="text" name="id" />
+				<input type="password" name="password" />
+				<input type="submit" id="loginBtn" value="로그인" />
+			</form>
 			<br />
+			<br />
+			<? if(session.userInfo) { ?>
+			<input type="hidden" id="userId" value="<?= session.userInfo.id ?>" />
+			<input type="checkbox" id="sync" value="화면공유" />
+			화면공유
+			<input type="checkbox" id="remoteControl" value="원격제어"/>
+			원격제어
+			<br />
+			<? } ?>
 			<input type="button" id="slideLeft" value="left"/>
 			<input type="button" id="slideRight" value="right"/>
 			<input type="button" id="slideShow" value="slideShow"/>
-			
+
 			<div id="qrCode"></div>
 		</div>
 	</body>
+	<script></script>
 </html>

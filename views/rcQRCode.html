@@ -20,31 +20,19 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/lib/jquery/jquery-1.11.0.js"></script>
 		<script src="/lib/qrcode/qrcode.js"></script>
-		<script src="/lib/jquery/jquery.md5.js"></script>
 		<script src="/javascript/socket/controller.js"></script>
-		<script src="/javascript/common/common.js"></script>
-		
 		<!-- 모바일용 스크립트 -->
+		<script>
+			
+		</script>
 	</head>
 
 	<body>
-		<input type="hidden" id="type" value="controller" />
-		
-		<? if( !session.userInfo ) { ?>
-		<form id="loginForm" action="#">
-			<input type="text" name="id" />
-			<input type="password" name="password" />
-			<input type="submit" id="loginBtn" value="로그인" />
-		</form>
-		<? }?>
-		<?  if(session.userInfo) {?>
 		<div>
-			<input type="hidden" id="userId" value="<?= session.userInfo.id ?>" />
 			<input type="hidden" id="connectionKey" value="<?= connectionKey ?>" />
 			<input type="button" id="slideLeft" value="left"/>
 			<input type="button" id="slideRight" value="right"/>
 			<input type="button" id="connection" value="connection"/>
 		</div>
-		<? }?>
 	</body>
 </html>

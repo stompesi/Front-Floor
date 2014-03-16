@@ -51,7 +51,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 
 app.get('/pc', routes.pc);
 app.get('/rc/rc', routes.rc);

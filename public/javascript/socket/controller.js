@@ -13,9 +13,6 @@ $(document).ready(function() {
 			connectionKey : connectionKey
 		});
 	});
-	socket.emit('join', {
-		connectionKey : connectionKey
-	});	
 	socket.on('join', function(data) {
 		if (data.status == 200) {
 			alert('접속성공');
