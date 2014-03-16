@@ -14,7 +14,7 @@ $(document).ready(function() {
 		});
 	});
 	socket.on('join', function(data) {
-		if (data.status == 200) {
+		if (data.status) {
 			alert('접속성공');
 		} else {
 			alert('다시연결해주시기 바랍니다');

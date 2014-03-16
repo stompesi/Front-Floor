@@ -8,13 +8,13 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var ejs = require('ejs');
-var socket = require('./socket/socket');
+var socket = require('./server/socket/socket.js');
 
 /*
  * write enterkey
  */
 var user = require('./routes/user.js');
-var mainDB = require('./database/main.js');
+var mainDB = require('./server/database/main.js');
 
 var app = require('express')(), server = require('http').createServer(app);
 
@@ -29,7 +29,6 @@ app.configure(function() {
 	app.engine('.html', ejs.__express);
 	ejs.open = '<?';
 	ejs.close = '?>';
-
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
@@ -49,8 +48,6 @@ app.configure(function() {
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
-
-app.get('/', routes.index);
 
 app.get('/pc', routes.pc);
 app.get('/rc/rc', routes.rc);

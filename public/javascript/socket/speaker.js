@@ -1,12 +1,6 @@
 /**
  * @author stompesi
  */
-
-var testData = {
-	userId : '1234',
-	title : 'test',
-};
-
 var server = 'http://192.168.1.11',
 	speaker = {
 		socket : null,
@@ -61,12 +55,7 @@ events.right.off = function() {
 	alert('leftFromMe');
 };
 
-events.makeQRCode = function(connectionKey) {
-	var qrcode = new QRCode("qrCode");
-	qrcode.makeCode(server + "/rc/rc?connectionKey=" + connectionKey);
-};
-
-
+// Socket Event
 events.socketInit = function() {
 	var socket = speaker.socket = io.connect(server),
 		connectionKey = speaker.connectionKey;
@@ -74,18 +63,18 @@ events.socketInit = function() {
 	// makeRoom : user presentation room make 
 	socket.emit('makeRoom', {
 		userId : $('#userId').val(),
-		title : testData.title,
+		title : '',
 		connectType : 'PC',
 	});
 	socket.on('makeRoom', function(data) {
-		if (data.status == 200) {
+		if (data.status) {
 			connectionKey = data.data.connectionKey;
 			
 			/** choose **/
 			//connection Type  : QRCode
-			if ($('#remoteControl').is(":checked")) {
-				events.makeQRCode(connectionKey);
-			}
+			// if ($('#remoteControl').is(":checked")) {
+				// events.makeQRCode(connectionKey);
+			// }
 			//connection Type  : App - notThing
 			
 		} else {
@@ -102,4 +91,10 @@ events.socketInit = function() {
 	socket.on('slideRight', function() {
 		alert('right');
 	});
+};
+
+// option : QRcode make
+events.makeQRCode = function(connectionKey) {
+	var qrcode = new QRCode("qrCode");
+	qrcode.makeCode(server + "/rc/rc?connectionKey=" + connectionKey);
 };
