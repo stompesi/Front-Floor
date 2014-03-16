@@ -7,7 +7,6 @@ exports.index = function(req, res) {
 };
 
 exports.pc = function(req, res) {
-
 	res.render('pc.html');
 };
 

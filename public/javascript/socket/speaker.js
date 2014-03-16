@@ -7,12 +7,12 @@ var testData = {
 	title : 'test',
 };
 
-var server = 'http://192.168.1.11';
-var speaker = {
-	socket : null,
-	connectStatus : 'off',
-	connectionKey : null
-};
+var server = 'http://192.168.1.11',
+	speaker = {
+		socket : null,
+		connectStatus : 'off',
+		connectionKey : null
+	};
 
 $(document).ready(function() {
 	var connectStatus = speaker.connectStatus;
@@ -35,10 +35,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
-
-
-
 
 /** Event Process **/
 var events = {};
