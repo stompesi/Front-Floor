@@ -6,8 +6,8 @@ exports.init = function(server) {
 	var io = require('socket.io').listen(server);
 	io.set('log level', 0);
 	io.sockets.on('connection', function(socket) {
-		
 		// makeRoom : user presentation room make by speaker
+		console.log('connection');
 		socket.on('makeRoom', function(data) {
 			var path = process.cwd(),
 				md5 = require(path + '/server/common/md5'),

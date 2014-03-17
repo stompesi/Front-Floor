@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-	var server = 'http://192.168.1.11',
+	var server = 'http://localhost',
 		socket = io.connect(server),
 		connectionKey = $('#connectionKey').val();
 

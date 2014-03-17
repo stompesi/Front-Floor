@@ -1,7 +1,7 @@
 /**
  * @author stompesi
  */
-var server = 'http://192.168.1.11',
+var server = 'http://localhost',
 	speaker = {
 		socket : null,
 		connectStatus : 'off',
