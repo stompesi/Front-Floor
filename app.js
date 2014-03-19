@@ -52,6 +52,12 @@ if ('development' == app.get('env')) {
 app.get('/pc', routes.pc);
 app.get('/rc/rc', routes.rc);
 
+// join & login test
+app.get('/', routes.index);
+
+// 회원가입
+app.post('/user/join', mainDB.join, user.join);
+
 // 로그인
 app.post('/user/login', mainDB.login, user.login);
 app.get('/user/logout', user.logout);

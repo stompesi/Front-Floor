@@ -3,9 +3,19 @@
  * GET users listing.
  */
 
-exports.list = function(req, res){
-  res.send("respond with a resource");
-};
+// 회원가입
+exports.join = function(req, res) {
+	var result = {};
+	if (res.locals.err) {
+		result.status = false;
+		result.errorMessage = "회원가입 실패"; 
+		res.send(result);
+	} else {
+		result.status = true;
+		result.errorMessage = "회원가입 성공, 로그인 하세요.";
+		res.send(result);
+	}
+}
 
 //로그인
 exports.login = function(req, res) {
@@ -29,3 +39,13 @@ exports.logout = function(req, res) {
 	clearSession(req);
 	res.redirect('/');
 };
+
+function clearSession(req) {
+	delete req.session.userInfo;
+}
+
+exports.list = function(req, res){
+  res.send("respond with a resource");
+};
+
+

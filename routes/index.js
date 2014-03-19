@@ -18,8 +18,12 @@ exports.rc = function(req, res) {
 	res.render('rc.html');
 };
 
+exports.index = function(req, res) {
+	res.render('index.html');
+};
+
 /** controller process by QRCode **/ 
 // exports.rc = function(req, res) {
-	// res.locals.connectionKey = req.query.connectionKey;
-	// res.render('rc.html');
+// res.locals.connectionKey = req.query.connectionKey;
+// res.render('rc.html');
 // };

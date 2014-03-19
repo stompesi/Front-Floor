@@ -19,3 +19,14 @@ exports.login = function(req, res, next){
 		next();
 	});
 }
+
+exports.join = function(req, res, next){
+	var userInfo = req.body;
+	connection.query('INSERT INTO user_info SET ?', userInfo, function(err, result) {
+	if(err){
+		console.error(err);
+		res.locals.err = err;
+	}
+	next();
+	});
+}
