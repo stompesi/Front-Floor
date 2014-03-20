@@ -15,6 +15,7 @@ var socket = require('./server/socket/socket.js');
  */
 var user = require('./routes/user.js');
 var mainDB = require('./server/database/main.js');
+var oauth = require('./oauth');
 
 var app = require('express')(), server = require('http').createServer(app);
 
@@ -42,12 +43,15 @@ app.configure(function() {
 		res.locals.session = req.session;
 		next();
 	});
-	app.use(app.router);
 });
 // development only
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
+
+// passport
+oauth.init(app);
+app.use(app.router);
 
 app.get('/pc', routes.pc);
 app.get('/rc/rc', routes.rc);

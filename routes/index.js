@@ -19,6 +19,8 @@ exports.rc = function(req, res) {
 };
 
 exports.index = function(req, res) {
+	console.log('login Info : ' );
+  	console.dir(req.session.passport);
 	res.render('index.html');
 };
 
