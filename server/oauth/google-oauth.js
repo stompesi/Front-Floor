@@ -1,6 +1,7 @@
 //module.exports = init;
 exports.init = function(app) {
-	var pkginfo = require('./package');
+	var path = process.cwd()
+	var pkginfo = require(path + '/package');
 	var passport = require('passport');
 	app.use(passport.initialize());
 	app.use(passport.session());
