@@ -41,7 +41,7 @@
 				
 				
 				$("#loginBtn").bind("click", function(e) {
-					var url = "/user/login",
+					var url = "/login",
 					type = $('#type').val(),
 					loginInfo = $('#loginForm').serialize();
 					e.preventDefault();
@@ -124,7 +124,7 @@
 								<div class="modal-body">
 									<form id="loginForm" action="#">
 										<label class="label-success">email</label>
-										<input type="email" name="id" />
+										<input type="email" name="userId" />
 										<br />
 										
 										<label class="label-success">password</label>
