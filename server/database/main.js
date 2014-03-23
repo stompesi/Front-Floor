@@ -18,7 +18,7 @@ exports.login = function(req, res, next){
 		}
 		next();
 	});
-}
+};
 
 exports.join = function(req, res, next){
 	var userInfo = req.body;
@@ -29,4 +29,4 @@ exports.join = function(req, res, next){
 	}
 	next();
 	});
-}
+};
