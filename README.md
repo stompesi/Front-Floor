@@ -36,3 +36,8 @@ Front-Floor
 
 ### 기본 설계서
 * 4월 13일: [다운로드](https://github.com/stompesi/Front-Floor/raw/master/docs/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%89%E1%85%A5/%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%20%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%89%E1%85%A5%20140413.pdf)
+
+### 상세 설계서
+* 5월 10일: [다운로드](https://github.com/stompesi/Front-Floor/raw/master/docs/)
+
+
